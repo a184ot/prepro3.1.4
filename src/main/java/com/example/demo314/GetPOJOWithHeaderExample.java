@@ -30,12 +30,14 @@ public class GetPOJOWithHeaderExample {
         // Send request with GET method, and Headers.
         ResponseEntity<User[]> response = restTemplate.exchange(URL_EMPLOYEES,
                 HttpMethod.GET, entity, User[].class);
+
         HttpStatus statusCode = response.getStatusCode();
         System.out.println("Response Satus Code: " + statusCode);
         List<String> myCookie = response.getHeaders().get("Set-Cookie");
         HttpHeaders myHeader = response.getHeaders();
         System.out.println(response.getHeaders().get("Set-Cookie"));
         System.out.println(myCookie);
+
         // Status Code: 200
         if (statusCode == HttpStatus.OK) {
             // Response Body Data
@@ -54,6 +56,7 @@ public class GetPOJOWithHeaderExample {
         System.out.println("-------------------------POST start--------------------------------- ");
         System.out.println(myHeader);
         headers.setAccept(Arrays.asList(new MediaType[] { MediaType.APPLICATION_JSON }));
+        // Request to return XML format
         headers.setContentType(MediaType.APPLICATION_JSON);
         String cook = myCookie.get(0);
         System.out.println("cookies"+cook);
